@@ -8,7 +8,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(String(sensor.read()) + " PSI");
+  Serial.println(String(sensor.read()) + " kPa");
   Serial.println();
   delay(2000);
 }

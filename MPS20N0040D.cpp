@@ -50,7 +50,7 @@ void MPS20N0040D::attach(byte pin) {
  *   none
  *
  * Returns
- *   float: pressure (PSI)
+ *   float: pressure (kPa)
  */
 float MPS20N0040D::read() {
   float value, result;
