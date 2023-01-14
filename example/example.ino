@@ -4,11 +4,10 @@ MPS20N0040D sensor;
 
 void setup() {
   Serial.begin(9600);
-  sensor.attach(0);
+  sensor.begin(A0);
 }
 
 void loop() {
   Serial.println(String(sensor.read()) + " kPa");
-  Serial.println();
-  delay(2000);
+  delay(1000);
 }

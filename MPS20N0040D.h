@@ -17,7 +17,7 @@ class MPS20N0040D
 {
   public:
     MPS20N0040D();
-    void attach(byte pin);
+    void begin(byte pin);
     float read();
   private:
     byte _pin;

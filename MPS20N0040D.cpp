@@ -21,12 +21,12 @@
 MPS20N0040D::MPS20N0040D() {
 }
 
-/* attach
+/* begin
  *
  * Description
  *   Attach sensor.
  *
- *   sensor.attach(byte pin)
+ *   sensor.begin(byte pin)
  *
  * Parameters
  *   pin: Arduino pin connected to sensor pin
@@ -34,7 +34,7 @@ MPS20N0040D::MPS20N0040D() {
  * Returns
  *   void
  */
-void MPS20N0040D::attach(byte pin) {
+void MPS20N0040D::begin(byte pin) {
   _pin = pin;
   pinMode(_pin, INPUT);
 }
@@ -53,10 +53,9 @@ void MPS20N0040D::attach(byte pin) {
  *   float: pressure (kPa)
  */
 float MPS20N0040D::read() {
-  float value, result;
+  int offset = 37; // zero pressure adjust
+  int fullScale = 963; // max pressure (span) adjust
+  int raw = analogRead(_pin);
 
-  value = analogRead(_pin);
-  result = value * 700 / 970 - 115;
-
-  return result;
+  return (raw - offset) * 700.0 / (fullScale - offset);
 }
