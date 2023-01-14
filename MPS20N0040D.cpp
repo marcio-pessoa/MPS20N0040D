@@ -53,7 +53,7 @@ void MPS20N0040D::begin(byte pin) {
  *   float: pressure (kPa)
  */
 float MPS20N0040D::read() {
-  int offset = 37; // zero pressure adjust
+  int offset = 41; // zero pressure adjust
   int fullScale = 963; // max pressure (span) adjust
   int raw = analogRead(_pin);
 
