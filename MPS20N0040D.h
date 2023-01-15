@@ -1,4 +1,4 @@
-/* Ultrasonic.h - MPS20N0040D Pressure Sensor Library
+/* MPS20N0040D.h - MPS20N0040D Pressure Sensor Library
  *
  * Author: Márcio Pessoa <marcio.pessoa@gmail.com>
  * Contributors: none
