@@ -36,7 +36,23 @@ MPS20N0040D::MPS20N0040D() {
  */
 void MPS20N0040D::begin(byte pin) {
   _pin = pin;
+  _offset = 41;
   pinMode(_pin, INPUT);
+}
+
+/* calibrate
+ *
+ * Description
+ *   Calibrate sensor with zero value.
+ *
+ *   sensor.calibrate()
+ *
+ * Parameters
+ *   none
+ */
+void MPS20N0040D::calibrate() {
+  int offset = 5;
+  _offset = _readSensor() + offset;
 }
 
 /* read
@@ -53,9 +69,24 @@ void MPS20N0040D::begin(byte pin) {
  *   float: pressure (kPa)
  */
 float MPS20N0040D::read() {
-  int offset = 41; // zero pressure adjust
   int fullScale = 963; // max pressure (span) adjust
-  int raw = analogRead(_pin);
 
-  return (raw - offset) * 700.0 / (fullScale - offset);
+  return (_readSensor() - _offset) * 700.0 / (fullScale - _offset);
+}
+
+/* readSensor
+ *
+ * Description
+ *   Get sensor raw data.
+ *
+ *   sensor.readSensor()
+ *
+ * Parameters
+ *   none
+ *
+ * Returns
+ *   int: sensor raw data (0 ~ 1024)
+ */
+int MPS20N0040D::_readSensor() {
+  return analogRead(_pin);
 }

@@ -18,9 +18,12 @@ class MPS20N0040D
   public:
     MPS20N0040D();
     void begin(byte pin);
+    void calibrate();
     float read();
   private:
+    int _readSensor();
     byte _pin;
+    float _offset;  // temperature and atmospheric pressure compensation
 };
 
 #endif
