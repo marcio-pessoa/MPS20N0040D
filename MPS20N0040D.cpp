@@ -53,9 +53,10 @@ void MPS20N0040D::begin(byte pin) {
  *   float: pressure (kPa)
  */
 float MPS20N0040D::read() {
-  int fullScale = 963; // max pressure (span) adjust
-  int offset = 1;
+  int fullScale = 1024;  // max pressure (span) adjust
+  float kPaFactor = 700.0;  // used to convert eletronic value to kPa
+  int offset = 0;
   int sensor_raw = analogRead(_pin);
 
-  return (sensor_raw - offset) * 700.0 / (fullScale - offset);
+  return (sensor_raw - offset) * kPaFactor / (fullScale - offset);
 }
