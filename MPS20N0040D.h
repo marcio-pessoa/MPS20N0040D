@@ -15,12 +15,13 @@
 
 class MPS20N0040D
 {
-  public:
-    MPS20N0040D();
-    void begin(byte pin);
-    float read();
-  private:
-    byte _pin;
+public:
+  MPS20N0040D();
+  void begin(byte pin);
+  float read();
+
+private:
+  byte _pin;
 };
 
 #endif
