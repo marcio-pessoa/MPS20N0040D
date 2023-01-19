@@ -57,7 +57,7 @@ void MPS20N0040D::begin(byte pin)
 float MPS20N0040D::read()
 {
   int fullScale = 1024;  // max pressure (span) adjust
-  float barFactor = 0.4; // used to convert eletronic value to Bar
+  float barFactor = 4; // used to convert eletronic value to Bar
   int offset = 0;
   int sensor_raw = analogRead(_pin);
 
