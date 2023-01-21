@@ -13,6 +13,7 @@
 
 #include "Arduino.h"
 
+/// @brief MPS20N0040D Pressure Sensor Library
 class MPS20N0040D
 {
 public:
