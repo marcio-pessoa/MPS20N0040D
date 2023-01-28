@@ -13,6 +13,10 @@
 
 #include "Arduino.h"
 
+#define FULLSCALE 1024 // max A/D value (span) adjust
+#define BAR_FACTOR 4   // convert eletronic value to pressure unit
+#define OFFSET 0
+
 /// @brief MPS20N0040D Pressure Sensor Library
 class MPS20N0040D
 {
