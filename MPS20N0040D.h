@@ -3,7 +3,10 @@
  * Author: Márcio Pessoa <marcio.pessoa@gmail.com>
  * Contributors: none
  *
- * Change log
+ * Change log:
+ * 2023-02-26
+ *   Add begin on constructor
+ *
  * 2023-01-14
  *   Experimental version.
  */
@@ -20,7 +23,7 @@
 /// @brief MPS20N0040D Pressure Sensor Library
 class MPS20N0040D {
  public:
-  MPS20N0040D();
+  MPS20N0040D(byte pin = A0);
   void begin(byte pin);
   float read();
 

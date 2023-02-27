@@ -5,7 +5,7 @@
 #include "MPS20N0040D.h"
 #include "Arduino.h"
 
-MPS20N0040D::MPS20N0040D() {}
+MPS20N0040D::MPS20N0040D(byte pin) { begin(pin); }
 
 /// @brief Attach sensor.
 /// @param pin arduino pin connected to the sensor.
