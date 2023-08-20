@@ -3,6 +3,7 @@
  */
 
 #include "MPS20N0040D.h"
+
 #include "Arduino.h"
 
 MPS20N0040D::MPS20N0040D(byte pin) { begin(pin); }
@@ -22,5 +23,8 @@ float MPS20N0040D::read() {
   int offset = 0;
   int sensor_raw = analogRead(_pin);
 
-  return (((sensor_raw - offset) * barFactor / (fullScale - offset)) ^ 0.4 * 1.8) - 1;
+  float filtered = (sensor_raw - offset) * barFactor / (fullScale - offset);
+  float powa = pow(filtered, 0.4);
+
+  return (powa * 1.8) - 1;
 }

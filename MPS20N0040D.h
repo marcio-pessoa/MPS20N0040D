@@ -4,6 +4,9 @@
  * Contributors: none
  *
  * Change log:
+ * 2023-10-11
+ *   Fix offset algorithm
+ *
  * 2023-02-26
  *   Add begin on constructor
  *
