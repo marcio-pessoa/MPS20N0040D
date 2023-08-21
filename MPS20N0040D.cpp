@@ -22,9 +22,7 @@ float MPS20N0040D::read() {
   float barFactor = 4;   // convert eletronic value to pressure unit
   int offset = 0;
   int sensor_raw = analogRead(_pin);
-
   float filtered = (sensor_raw - offset) * barFactor / (fullScale - offset);
-  float powa = pow(filtered, 0.4);
 
-  return (powa * 1.8) - 1;
+  return (pow(filtered, 0.4) * 1.8) - 1;
 }
