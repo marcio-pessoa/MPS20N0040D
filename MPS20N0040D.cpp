@@ -22,5 +22,5 @@ float MPS20N0040D::read() {
   int offset = 0;
   int sensor_raw = analogRead(_pin);
 
-  return (sensor_raw - offset) * barFactor / (fullScale - offset);
+  return (((sensor_raw - offset) * barFactor / (fullScale - offset)) ^ 0.4 * 1.8) - 1;
 }
