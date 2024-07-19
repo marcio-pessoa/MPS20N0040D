@@ -15,14 +15,18 @@ void MPS20N0040D::begin(byte pin) {
   pinMode(_pin, INPUT);
 }
 
-/// @brief Get sensor pressure.
-/// @return Measured pressure (unit: Bar).
-float MPS20N0040D::read() {
+/// @brief Read sensor, raw mode
+/// @return int (0 ~ 1024)
+int MPS20N0040D::_raw() { return analogRead(_pin); }
+
+/// @brief Span ajust
+/// @return float
+float MPS20N0040D::_span() {
   int fullScale = 1024;  // max A/D value (span) adjust
   float barFactor = 4;   // convert eletronic value to pressure unit
-  int offset = 0;
-  int sensor_raw = analogRead(_pin);
-  float filtered = (sensor_raw - offset) * barFactor / (fullScale - offset);
-
-  return (pow(filtered, 0.4) * 1.8) - 1;
+  return _raw() * barFactor / fullScale;
 }
+
+/// @brief Get sensor pressure.
+/// @return Measured pressure (unit: Bar).
+float MPS20N0040D::read() { return _span() * 0.71; }
