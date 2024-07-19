@@ -3,15 +3,6 @@
  * Author: Márcio Pessoa <marcio.pessoa@gmail.com>
  * Contributors: none
  *
- * Change log:
- * 2023-10-11
- *   Fix offset algorithm
- *
- * 2023-02-26
- *   Add begin on constructor
- *
- * 2023-01-14
- *   Experimental version.
  */
 
 #ifndef MPS20N0040D_h
@@ -27,6 +18,8 @@ class MPS20N0040D {
   float read();
 
  private:
+  int _raw();
+  float _span();
   byte _pin;
 };
 
